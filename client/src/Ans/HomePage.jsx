@@ -1,5 +1,5 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
@@ -8,32 +8,27 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(null);
 
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     getProducts();
-   
   }, []);
-
-  
 
   const getProducts = async () => {
     try {
-      
+      setIsError(false);
       setIsLoading(true);
-      const result = await axios("http://localhost:4001/products");
-      setProducts(result.data.data);
-      console.log(result)
+      const results = await axios("http://localhost:4001/products");
+      setProducts(results.data.data);
       setIsLoading(false);
     } catch (error) {
       setIsError(true);
     }
   };
 
-  const handleDelete = async (idSelect) => {
+  const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4001/products/${idSelect}`);
-      const updateProducts = products.filter((item) => item.id !== idSelect);
+      await axios.delete(`http://localhost:4001/products/${id}`);
+      const updateProducts = products.filter((item) => item.id !== id);
       setProducts(updateProducts);
     } catch (error) {
       alert(error);

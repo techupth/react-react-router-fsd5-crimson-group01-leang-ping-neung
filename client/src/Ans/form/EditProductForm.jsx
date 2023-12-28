@@ -45,7 +45,7 @@ function EditProductForm() {
     setName(response.data.data.name);
     setImage(response.data.data.image);
     setPrice(response.data.data.price);
-    setDescription(response.data.data.description);
+    setDescr(response.data.data.description);
   };
 
   return (
@@ -77,7 +77,7 @@ function EditProductForm() {
             onChange={(e) => {
               setImage(e.target.value);
             }}
-            value={image}
+            value={img}
           />
         </label>
       </div>
@@ -109,7 +109,7 @@ function EditProductForm() {
             }}
             rows={4}
             cols={30}
-            value={description}
+            value={descr}
           />
         </label>
       </div>
