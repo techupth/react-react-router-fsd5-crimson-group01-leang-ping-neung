@@ -13,8 +13,12 @@ function HomePage() {
     navigate("/create");
   };
 
-  const handleViewButton = (id) => {
-    navigate(`/product/view/${id}`);
+  const handleEditButton = (productId) => {
+    navigate(`product/edit/${productId}`);
+  };
+
+  const handleViewButton = (productId) => {
+    navigate(`/product/view/${productId}`);
   };
 
   const getProducts = async () => {
@@ -43,7 +47,7 @@ function HomePage() {
       <div className="product-list">
         {products.map((product) => {
           return (
-            <div className="product">
+            <div key={product.id} className="product">
               <div className="product-preview">
                 <img
                   src="https://via.placeholder.com/250/250"
@@ -63,7 +67,12 @@ function HomePage() {
                   >
                     View
                   </button>
-                  <button className="edit-button">Edit</button>
+                  <button
+                    className="edit-button"
+                    onClick={() => handleEditButton(product.id)}
+                  >
+                    Edit
+                  </button>
                 </div>
               </div>
 

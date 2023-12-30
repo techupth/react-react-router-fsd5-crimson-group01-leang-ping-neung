@@ -11,7 +11,6 @@ function ViewProductPage() {
     const data = await axios.get(
       `http://localhost:4001/products/${params.productId}`
     );
-    console.log(data);
     setDisplayProduct(data.data.data);
   };
 
